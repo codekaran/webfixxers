@@ -1,0 +1,11 @@
+.outer_section {
+  background-color: #666666;
+  height: 10px;
+  border-radius: 10px;
+}
+.inner_section {
+  background-color: #58ffbb;
+
+  height: 10px;
+  border-radius: 10px;
+}

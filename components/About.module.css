@@ -1,0 +1,232 @@
+.about_second_section_container {
+  display: flex;
+  height: 930px;
+  justify-content: center;
+  background-color: #e3fff4;
+  padding: 10%;
+}
+.about_description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10%;
+}
+
+.about_image {
+  background: url(../images/about_second.png);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.about_third_section {
+  background-color: #032436;
+  height: 745px;
+  color: white;
+}
+
+.about_third_section {
+  display: flex;
+  height: 930px;
+  justify-content: center;
+  background-color: #032436;
+  padding: 10%;
+}
+.progress_bar_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.progress_bar_info {
+  margin-bottom: 2%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  /* or 25px */
+
+  color: #ffffff;
+}
+.progress_percent {
+  float: right;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 150%;
+  /* identical to box height, or 22px */
+
+  /* text-align: right; */
+
+  color: #ffffff;
+}
+.about_fourth_section {
+  position: relative;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 13%;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+}
+.about_card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+  grid-gap: 100px;
+  justify-content: center;
+  margin-top: 5%;
+  width: 100%;
+}
+
+.card {
+  border: 2px solid white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 300px;
+  box-shadow: 0px 13px 26px rgba(0, 0, 0, 0.2);
+  transition: border 0.3s ease-in;
+}
+
+.card_description {
+  padding: 15px;
+}
+
+.card_image {
+  background: url(../images/about_help_image.png);
+  border-radius: 4px 4px 0px 0px;
+  width: 50px;
+  margin-top: 15%;
+  margin-left: 15px;
+  height: 45px;
+  background-position: center;
+  background-size: cover;
+}
+
+.card_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 140%;
+  color: #1c2930;
+  width: 70%;
+}
+
+.card:hover {
+  border: 2px solid #032436;
+}
+.card:hover .learn_more_link {
+  transform: translateY(0);
+}
+.learn_more_link {
+  transition: all 0.3s ease-in;
+  color: white;
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+  background-color: #032436;
+  /* margin-top: 5%; */
+  /* border-radius: 0px 0px 4px 4px; */
+  transform: translateY(100%);
+  bottom: 0;
+}
+.about_fourth_section_part {
+  height: 550px;
+  background-color: #e3fff4;
+  position: absolute;
+  width: 80%;
+  bottom: -80%;
+  border-radius: 0px 8px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about_fourth_section_part_description {
+  padding: 30px;
+}
+.about_fourth_section_part_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 45px;
+
+  font-feature-settings: "pnum" on, "lnum" on;
+}
+
+.about_fourth_section_part_image {
+  background: url(../images/about_fourth.png);
+  background-position: center;
+  background-size: cover;
+  width: 200%;
+  height: 100%;
+}
+.about_fifth_section {
+  background-color: #032436;
+  height: 600px;
+}
+.home_button {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.09em;
+  color: white;
+  line-height: 31px;
+  background-color: #1c2930;
+  width: 269px;
+  height: 60px;
+  border-radius: 2px;
+  border: none;
+  margin-top: 64px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .about_second_section_container {
+    height: auto;
+    flex-direction: column;
+    /* padding: 20%; */
+  }
+  .about_description {
+    align-items: center;
+    text-align: center;
+    margin: 0;
+  }
+  .about_image {
+    height: 400px;
+    margin-top: 10%;
+  }
+  .about_third_section {
+    height: auto;
+    flex-direction: column;
+  }
+  .progress_bar_description {
+    margin-top: 10%;
+  }
+  .about_fourth_section {
+    height: auto;
+  }
+  .about_fourth_section_part {
+    position: relative;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    flex-direction: column;
+    height: auto;
+  }
+  .about_fourth_section_part_image {
+    width: 100%;
+    height: 300px;
+  }
+  .about_fifth_section {
+    display: none;
+  }
+}

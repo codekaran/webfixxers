@@ -1,16 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700;800&display=swap");
+
 html,
 body {
+  overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+p {
+  margin: 0;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+}
 
 * {
   box-sizing: border-box;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.small_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  /* text / text brown */
+
+  color: #0090e1;
+}
+
+.large_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height, or 58px */
+
+  font-feature-settings: "tnum" on, "lnum" on, "liga" off;
+}
+
+.info {
+  margin-top: 2%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 30px;
+  color: #666666;
+  margin-top: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .small_heading {
+    font-size: 15px;
+    margin-top: 10%;
+  }
+  .large_heading {
+    margin-bottom: 10%;
+    line-height: 35px;
+    font-size: 35px;
+  }
+  .info {
+    /* font-size: 10px; */
+  }
 }

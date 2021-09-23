@@ -1,0 +1,34 @@
+@import "../styles/mixin";
+.second_section {
+  padding: 10%;
+}
+.third_section {
+  background-color: #032436;
+  .intro {
+    padding: 10%;
+  }
+}
+.card_container {
+  @include grid_layout();
+  padding-bottom: 5%;
+}
+.package_list {
+  @include flex_props(center, flex-start);
+  flex-direction: column;
+}
+.pointer {
+  color: #6ddb46;
+  font-weight: bold;
+  width: 1em;
+  margin-right: 1em;
+}
+.list_container {
+  display: flex;
+  line-height: 38px;
+}
+
+@media screen and (max-width: 768px) {
+  .list_container {
+    line-height: 30px;
+  }
+}

@@ -1,0 +1,28 @@
+@import "../styles/mixin";
+
+.card_image {
+  @include background_props(0px, 0px);
+  margin-bottom: 12px;
+}
+.card_container_center {
+  @include flex_props(center, center);
+  text-align: center;
+  flex-direction: column;
+}
+.card_container_left {
+  @include flex_props(none, none);
+  text-align: left;
+  flex-direction: column;
+}
+.card_info {
+  @include info(15px);
+}
+.card_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 34px;
+  color: #1c2930;
+  margin: 10px 0px;
+}

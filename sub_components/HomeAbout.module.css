@@ -1,0 +1,60 @@
+.home_about_container {
+  background-color: #032436;
+  color: white;
+  display: flex;
+  height: 700px;
+  margin-top: 10%;
+}
+
+.about_image {
+  background: url("../images/home_about.png");
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+}
+
+.about_description {
+  /* text / Body text */
+  margin-top: 5%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 40px;
+  /* or 40px */
+}
+
+.home_button {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.09em;
+  color: #1c2930;
+  line-height: 31px;
+
+  width: 269px;
+  height: 60px;
+  border-radius: 2px;
+  border: none;
+  margin-top: 64px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .home_about_container {
+    flex-direction: column;
+    height: auto;
+  }
+  .about_image {
+    height: 500px;
+  }
+}

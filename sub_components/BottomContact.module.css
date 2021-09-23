@@ -1,0 +1,110 @@
+.bottom_contact_container {
+  height: 450px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  background-color: #242424;
+  padding: 5%;
+  text-align: center;
+}
+.logo_container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.logo_container .section_heading {
+  color: #fbc108;
+}
+.logo {
+  background: url(../images/logo.png);
+  background-size: contain;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+.section_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5%;
+  line-height: 40px;
+
+  /* accent / primary */
+
+  color: #ffffff;
+}
+.section_value {
+  line-height: 30px;
+}
+.links {
+  display: flex;
+  line-height: 30px;
+  flex-direction: column;
+}
+.links a:hover {
+  box-shadow: 0px 1px white;
+}
+.contact_hover:hover {
+  box-shadow: 0px 1px white;
+}
+.bottom_text {
+  position: absolute;
+  bottom: 10px;
+}
+.social_contact {
+  display: flex;
+  margin-top: 50%;
+  justify-content: center;
+}
+.footer_whatsapp {
+  background: url(../images/footer_whatsapp.png);
+  background-position: center;
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.footer_linkedIn {
+  background: url(../images/footer_linkedIn.png);
+  background-position: center;
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.footer_fb {
+  background: url(../images/footer_fb.png);
+  background-position: center;
+  background-size: cover;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+@media screen and (max-width: 768px) {
+  .bottom_contact_container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    text-align: center;
+  }
+  .section_heading {
+    margin-top: 20%;
+  }
+  .social_contact {
+    justify-content: space-between;
+    /* width: 100%; */
+  }
+  .section {
+    margin-bottom: 5%;
+  }
+  .logo_container {
+    flex-direction: column;
+  }
+  .bottom_text {
+    /* margin-top: 100%; */
+  }
+}

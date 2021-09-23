@@ -1,0 +1,47 @@
+@import "../styles/mixin";
+
+.intro_container {
+  @include flex_props(center, center);
+  flex-direction: column;
+}
+.heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 22px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0090e1;
+}
+
+.sub_heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 58px;
+  font-feature-settings: "tnum" on, "lnum" on, "liga" off;
+  color: #1c2930;
+}
+
+.info {
+  margin-top: 20px;
+  @include info(15px);
+}
+
+@media screen and (max-width: 768px) {
+  .intro_container {
+    text-align: center;
+    align-items: center !important;
+  }
+  .heading {
+    font-size: 12px;
+    margin-top: 10%;
+  }
+  .sub_heading {
+    margin-bottom: 5%;
+    line-height: 35px;
+    font-size: 30px;
+  }
+}

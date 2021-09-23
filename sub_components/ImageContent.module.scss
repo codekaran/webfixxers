@@ -1,0 +1,27 @@
+@import "../styles/mixin";
+
+.container {
+  @include flex_props(center, center);
+  padding: 10%;
+}
+.card {
+  width: 100%;
+  @include flex_props(flex-end, center);
+}
+.heading {
+  @include flex_props(center, center);
+  flex-direction: column;
+}
+.text {
+  // padding: 10%;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .card {
+    margin-top: 10%;
+  }
+}

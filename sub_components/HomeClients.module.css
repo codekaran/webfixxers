@@ -1,0 +1,36 @@
+.home_clients_container {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.client_logo {
+  background-color: grey;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 5%;
+}
+.client_list {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 10%;
+}
+.client_container {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .home_clients_container {
+    height: auto;
+  }
+  .client_list {
+    flex-direction: column;
+  }
+}

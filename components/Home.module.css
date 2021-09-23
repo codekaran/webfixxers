@@ -1,0 +1,79 @@
+.home_image_container {
+  height: 700px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  height: 700px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #060606 0%,
+    rgba(6, 6, 6, 0.38) 78.95%,
+    rgba(6, 6, 6, 0.13) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.city_text {
+  color: white;
+  margin-left: 159px;
+  font-weight: bold;
+}
+.home_image {
+  background: url(../images/home.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.home_heading {
+  color: white;
+  margin-left: 159px;
+  font-family: poppins;
+  font-size: 72px;
+  line-height: 86px;
+  font-weight: 700;
+}
+
+.home_button {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.09em;
+  color: #1c2930;
+  line-height: 31px;
+  margin-left: 159px;
+  width: 269px;
+  height: 60px;
+  border-radius: 2px;
+  border: none;
+  margin-top: 64px;
+  cursor: pointer;
+  background-color: white;
+}
+
+@media only screen and (max-width: 760px) {
+  .overlay {
+    align-items: center;
+  }
+  .home_heading {
+    font-size: 30px;
+    line-height: 40px;
+    margin: 0;
+    text-align: center;
+  }
+  .home_button {
+    margin-left: 0;
+  }
+  .city_text {
+    margin-left: 0;
+  }
+}

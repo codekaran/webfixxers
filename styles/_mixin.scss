@@ -1,0 +1,33 @@
+@mixin flex_props($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+@mixin background_props($height, $width) {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: $width;
+  height: $height;
+}
+
+@mixin grid_layout() {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 350px));
+  grid-gap: 100px;
+  justify-content: center;
+
+  // height: $height;
+}
+
+@mixin info($size) {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: $size;
+  line-height: 30px;
+}
+
+@mixin text_align($align) {
+  text-align: $align;
+}

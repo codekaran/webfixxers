@@ -1,0 +1,25 @@
+.button {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.09em;
+  color: #1c2930;
+  line-height: 31px;
+  /* margin-left: 159px; */
+  width: 269px;
+  height: 60px;
+  border-radius: 2px;
+  border: none;
+  /* margin-top: 64px; */
+  cursor: pointer;
+  background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 30px !important;
+  }
+}

@@ -1,0 +1,47 @@
+.testimonials_container {
+  height: 600px;
+  background-color: #032436;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+.testimonials_info {
+  width: 100%;
+}
+.testimonials_quote {
+  height: auto;
+  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+}
+.testimonials_quote div {
+  padding: 8%;
+  line-height: 29px;
+}
+.client_name {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 31px;
+
+  letter-spacing: 0.01em;
+
+  color: #000000;
+}
+@media screen and (max-width: 768px) {
+  .testimonials_container {
+    flex-direction: column;
+    padding: 10%;
+    height: auto;
+  }
+  .testimonials_info {
+    text-align: center;
+  }
+  .testimonials_quote {
+    margin-top: 5%;
+    width: 90%;
+  }
+}
