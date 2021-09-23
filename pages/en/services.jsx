@@ -1,12 +1,6 @@
 import ServicesElement from "../../components/Services";
 
 const Services = (props) => {
-  data.sections[3]["SubHeadings1"] = ["Easy to use", "Beautiful design"];
-  data.sections[3]["SubHeadings2"] = ["Professional webshop", "Ouick setup"];
-  data.sections[3]["SubHeadings3"] = [
-    "Improve your website",
-    "Get more customers",
-  ];
   return <ServicesElement text={props.content}></ServicesElement>;
 };
 
