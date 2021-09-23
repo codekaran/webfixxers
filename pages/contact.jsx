@@ -1,7 +1,5 @@
 import Contact from "../components/Contact";
 import Head from "next/head";
-import useSWR from "swr";
-import { fetcher } from "../sub_components/Fetcher";
 
 const contact = (props) => {
   return (
