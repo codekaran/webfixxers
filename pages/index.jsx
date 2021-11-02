@@ -56,16 +56,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
+  const lang = locale === "nl" ? "nl" : "en";
   let data = {};
   try {
     let res = await fetch(
-      "https://webfixxers-cms.herokuapp.com/getData?page=home&lang=nl"
+      "http://localhost:8000/getData?page=home&lang=" + lang
     );
     res = await res.json();
     console.log(res);
     data = JSON.parse(res.data);
-    console.log(res);
     data["path"] = "";
   } catch (err) {
     console.log(err);
@@ -75,6 +75,7 @@ export async function getStaticProps() {
     props: {
       content: data,
     },
+    revalidate: 1,
   };
 }
 

@@ -61,11 +61,25 @@ export async function getStaticPaths() {
         params: {
           cityWebDesign: "webdesign-ledegem",
         },
+        locale: "en",
+      },
+      {
+        params: {
+          cityWebDesign: "webdesign-ledegem",
+        },
+        locale: "nl",
       },
       {
         params: {
           cityWebDesign: "webdesign-roeselare",
         },
+        locale: "en",
+      },
+      {
+        params: {
+          cityWebDesign: "webdesign-roeselare",
+        },
+        locale: "nl",
       },
     ],
   };
@@ -73,6 +87,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   let title = "";
   let description = "";
+  const lang = context.locale === "nl" ? "nl" : "en";
   if (context.params.cityWebDesign === "webdesign-roeselare") {
     title = "WebDesign Roeselare | WebFixxers";
     description =
@@ -85,7 +100,7 @@ export async function getStaticProps(context) {
   let data = {};
   try {
     let res = await fetch(
-      "https://webfixxers-cms.herokuapp.com/getData?page=home&lang=nl"
+      "http://localhost:8000/getData?page=home&lang=" + lang
     );
     res = await res.json();
     console.log(res);

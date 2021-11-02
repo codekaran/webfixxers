@@ -23,7 +23,7 @@ const HomeService = (props) => {
         <div className={classes.services_intro}>{parser(Intro)}</div>
       </div>
       <div className={classes.service_card_container}>
-        <Link href={props.text.path + "/web-design"}>
+        <Link href="/web-design">
           <div className={classes.card}>
             <div className={classes.card_image1}></div>
             <div className={classes.card_description}>
@@ -33,7 +33,7 @@ const HomeService = (props) => {
             </div>
           </div>
         </Link>
-        <Link href={props.text.path + "/web-shop"}>
+        <Link href="/web-shop">
           <div className={classes.card}>
             <div className={classes.card_image2}></div>
             <div className={classes.card_description}>
@@ -43,7 +43,7 @@ const HomeService = (props) => {
             </div>
           </div>
         </Link>
-        <Link href={props.text.path + "/seo-sea"}>
+        <Link href="/seo-sea">
           <div className={classes.card}>
             <div className={classes.card_image3}></div>
             <div className={classes.card_description}>

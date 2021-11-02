@@ -8,7 +8,7 @@ import parser from "react-html-parser";
 
 const About = (props) => {
   console.log(props);
-  let { sections, path } = props.text;
+  let { sections } = props.text;
   return (
     <>
       <Header
@@ -75,7 +75,7 @@ const About = (props) => {
         <div className="small_heading">{parser(sections[3].Heading)}</div>
         <div className="large_heading">{parser(sections[3].SubHeading)}</div>
         <div className={classes.about_card_container}>
-          <Link href={path + "/web-design"}>
+          <Link href="/web-design">
             <div className={classes.card}>
               <div className={classes.card_image}></div>
               <div className={classes.card_description}>
@@ -87,7 +87,7 @@ const About = (props) => {
               <div className={classes.learn_more_link}>Learn More</div>
             </div>
           </Link>
-          <Link href={path + "/web-shop"}>
+          <Link href="/web-shop">
             <div className={classes.card}>
               <div className={classes.card_image}></div>
               <div className={classes.card_description}>
@@ -99,7 +99,7 @@ const About = (props) => {
               <div className={classes.learn_more_link}>Learn More</div>
             </div>
           </Link>
-          <Link href={path + "/seo-sea"}>
+          <Link href="/seo-sea">
             <div className={classes.card}>
               <div className={classes.card_image}></div>
               <div className={classes.card_description}>
@@ -118,7 +118,7 @@ const About = (props) => {
               {parser(sections[4].Heading)}
             </h4>
             <div className="info">{parser(sections[4].Intro)}</div>
-            <Link href={path + "/pricing"}>
+            <Link href="/pricing">
               <button className={classes.home_button}>Learn More</button>
             </Link>
           </div>
@@ -127,7 +127,6 @@ const About = (props) => {
       </div>
       {/* fifth section */}
       <div className={classes.about_fifth_section}></div>
-      <BottomContact path={path}></BottomContact>
     </>
   );
 };

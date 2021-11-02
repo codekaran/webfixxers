@@ -7,7 +7,7 @@ import icon1 from "../images/pricing_heading1.png";
 import icon2 from "../images/pricing_heading2.png";
 import icon3 from "../images/pricing_heading3.png";
 import ImageContent from "../sub_components/ImageContent";
-import BottomContact from "../sub_components/BottomContact";
+
 import { useEffect, useState } from "react";
 
 const Pricing = (props) => {
@@ -126,7 +126,6 @@ const Pricing = (props) => {
           ></Para>
         </ImageContent>
       </div>
-      <BottomContact path={props.text.path}></BottomContact>
     </div>
   );
 };

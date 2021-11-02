@@ -11,7 +11,6 @@ class Nav extends Component {
     smallLineCross: "1",
     pageOffset: "",
     navbarScrollStyle: "0",
-    path: "",
     en_class: "",
     nl_class: "",
     drop_down_class: classes.drop_down,
@@ -21,7 +20,7 @@ class Nav extends Component {
   componentDidMount() {
     this.handleResize();
     this.checkLanguage();
-    this.setState({ path: this.props.path });
+
     window.addEventListener("resize", this.handleResize);
     window.addEventListener("scroll", this.handleScroll);
   }
@@ -32,11 +31,11 @@ class Nav extends Component {
   }
 
   checkLanguage = (lang) => {
-    let pathLang = lang || this.props.path;
+    let pathLang = lang || this.props.router.locale;
     console.log("path Lang = ", pathLang);
     let en_class = "";
     let nl_class = "";
-    if (pathLang === "/en") {
+    if (pathLang === "en") {
       console.log("english");
       en_class = classes.language_text + " " + classes.active_language;
       nl_class = classes.language_text + " " + classes.inactive_language;
@@ -109,7 +108,7 @@ class Nav extends Component {
         style={{ transform: `translateY(${this.state.navbarScrollStyle})` }}
         className={classes.navbar_container}
       >
-        <Link href={this.props.path + "/"}>
+        <Link href="/">
           <div className={classes.logo_container}>
             <div className={classes.logo}></div>
             <div className={classes.logo_heading}>WebFixxers</div>
@@ -119,7 +118,7 @@ class Nav extends Component {
           style={{ transform: `translateX(${this.state.mobileMenu})` }}
           className={classes.links}
         >
-          <Link href={this.props.path + "/"}>
+          <Link href="/">
             <a
               className={classes.link + " " + classes.home_link}
               onClick={this.handleBurgerClick}
@@ -128,13 +127,13 @@ class Nav extends Component {
             </a>
           </Link>
           <div className={classes.link + " " + classes.service_link}>
-            <Link href={this.props.path + "/services"}>
+            <Link href="/services">
               <a
                 onClick={() => {
                   this.handleBurgerClick();
                 }}
               >
-                {this.props.path === "/en" ? "Services" : "Diensten"}
+                {this.props.router.locale === "en" ? "Services" : "Diensten"}
               </a>
             </Link>
             <span
@@ -142,55 +141,56 @@ class Nav extends Component {
               className={this.state.arrow_class}
             ></span>
             <div className={this.state.drop_down_class}>
-              <Link href={this.props.path + "/web-design"}>
+              <Link href="/web-design">
                 <a onClick={this.handleBurgerClick}>Web Design</a>
               </Link>
-              <Link href={this.props.path + "/web-shop"}>
+              <Link href="/web-shop">
                 <a onClick={this.handleBurgerClick}>Web Shop</a>
               </Link>
-              <Link href={this.props.path + "/seo-sea"}>
+              <Link href="/seo-sea">
                 <a onClick={this.handleBurgerClick}>SEO & SEA</a>
               </Link>
             </div>
           </div>
-          <Link href={this.props.path + "/about"}>
+          <Link href="/about">
             <a className={classes.link} onClick={this.handleBurgerClick}>
-              {this.props.path === "/en" ? "About" : "Over ons"}
+              {this.props.router.locale === "en" ? "About" : "Over ons"}
             </a>
           </Link>
-          {/* <Link href={this.props.path + "/pricing"}>
+          {/* <Link href="/pricing">
             <a className={classes.link} onClick={this.handleBurgerClick}>
               Pricing
             </a>
           </Link> */}
-          <Link href={this.props.path + "/contact"}>
+          <Link href="/contact">
             <a className={classes.link} onClick={this.handleBurgerClick}>
               Contact
             </a>
           </Link>
           <div className={classes.language_selector}>
-            <div
-              onClick={() => {
-                this.handleBurgerClick();
-                this.props.updateURL(window.location.pathname, "/en");
-                this.checkLanguage("/en");
-              }}
-              className={this.state.en_class}
-            >
-              EN
-            </div>
-
-            <div
-              onClick={() => {
-                this.handleBurgerClick();
-                this.props.updateURL(window.location.pathname, "");
-                this.checkLanguage("/");
-              }}
-              style={{ marginLeft: "5px" }}
-              className={this.state.nl_class}
-            >
-              NL
-            </div>
+            <Link href={this.props.router.asPath} locale="en">
+              <a
+                onClick={() => {
+                  this.handleBurgerClick();
+                  this.checkLanguage("en");
+                }}
+                className={this.state.en_class}
+              >
+                EN
+              </a>
+            </Link>
+            <Link href={this.props.router.asPath} locale="nl">
+              <a
+                onClick={() => {
+                  this.handleBurgerClick();
+                  this.checkLanguage("nl");
+                }}
+                style={{ marginLeft: "5px" }}
+                className={this.state.nl_class}
+              >
+                NL
+              </a>
+            </Link>
           </div>
         </div>
         <div
@@ -217,3 +217,108 @@ class Nav extends Component {
 }
 
 export default Nav;
+
+// <Link href={this.props.path + "/"}>
+//           <div className={classes.logo_container}>
+//             <div className={classes.logo}></div>
+//             <div className={classes.logo_heading}>WebFixxers</div>
+//           </div>
+//         </Link>
+//         <div
+//           style={{ transform: `translateX(${this.state.mobileMenu})` }}
+//           className={classes.links}
+//         >
+//           <Link href={this.props.path + "/"}>
+//             <a
+//               className={classes.link + " " + classes.home_link}
+//               onClick={this.handleBurgerClick}
+//             >
+//               Home
+//             </a>
+//           </Link>
+//           <div className={classes.link + " " + classes.service_link}>
+//             <Link href={this.props.path + "/services"}>
+//               <a
+//                 onClick={() => {
+//                   this.handleBurgerClick();
+//                 }}
+//               >
+//                 {this.props.path === "/en" ? "Services" : "Diensten"}
+//               </a>
+//             </Link>
+//             <span
+//               onClick={this.handleDropDown}
+//               className={this.state.arrow_class}
+//             ></span>
+//             <div className={this.state.drop_down_class}>
+//               <Link href={this.props.path + "/web-design"}>
+//                 <a onClick={this.handleBurgerClick}>Web Design</a>
+//               </Link>
+//               <Link href={this.props.path + "/web-shop"}>
+//                 <a onClick={this.handleBurgerClick}>Web Shop</a>
+//               </Link>
+//               <Link href={this.props.path + "/seo-sea"}>
+//                 <a onClick={this.handleBurgerClick}>SEO & SEA</a>
+//               </Link>
+//             </div>
+//           </div>
+//           <Link href={this.props.path + "/about"}>
+//             <a className={classes.link} onClick={this.handleBurgerClick}>
+//               {this.props.path === "/en" ? "About" : "Over ons"}
+//             </a>
+//           </Link>
+{
+  /* <Link href={this.props.path + "/pricing"}>
+            <a className={classes.link} onClick={this.handleBurgerClick}>
+              Pricing
+            </a>
+          </Link> */
+}
+//   <Link href={this.props.path + "/contact"}>
+//     <a className={classes.link} onClick={this.handleBurgerClick}>
+//       Contact
+//     </a>
+//   </Link>
+//   <div className={classes.language_selector}>
+//     <div
+//       onClick={() => {
+//         this.handleBurgerClick();
+//         this.props.updateURL(window.location.pathname, "/en");
+//         this.checkLanguage("/en");
+//       }}
+//       className={this.state.en_class}
+//     >
+//       EN
+//     </div>
+
+//     <div
+//       onClick={() => {
+//         this.handleBurgerClick();
+//         this.props.updateURL(window.location.pathname, "");
+//         this.checkLanguage("/");
+//       }}
+//       style={{ marginLeft: "5px" }}
+//       className={this.state.nl_class}
+//     >
+//       NL
+//     </div>
+//   </div>
+// </div>
+// <div
+//   onClick={this.handleBurgerClick}
+//   style={{ display: this.state.burgerClass }}
+//   className={classes.burger}
+// >
+//   <div
+//     style={{ transform: this.state.bigLine1Cross }}
+//     className={classes.big_line}
+//   ></div>
+//   <div
+//     style={{ opacity: this.state.smallLineCross }}
+//     className={classes.small_line}
+//   ></div>
+//   <div
+//     style={{ transform: this.state.bigLine2Cross }}
+//     className={classes.big_line}
+//   ></div>
+// </div>

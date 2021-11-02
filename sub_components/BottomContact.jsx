@@ -1,8 +1,11 @@
 import classes from "./BottomContact.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const BottomContact = (props) => {
   // console.log(props);
+  let router = useRouter();
+  console.log(router.locale);
   return (
     <div className={classes.bottom_contact_container}>
       <div className={classes.section}>
@@ -24,18 +27,18 @@ const BottomContact = (props) => {
       <div className={classes.section}>
         <div className={classes.section_heading}>Links</div>
         <div className={classes.links}>
-          <Link href={props.path + "/"}>Home</Link>
-          <Link href={props.path + "/services"}>
-            {props.path === "/en" ? "Services" : "Diensten"}
+          <Link href="/">Home</Link>
+          <Link href="/services">
+            {router.locale === "en" ? "Services" : "Diensten"}
           </Link>
-          <Link href={props.path + "/pricing"}>Pricing</Link>
-          <Link href={props.path + "/about"}>
-            {props.path === "/en" ? "About" : "Over ons"}
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/about">
+            {router.locale === "en" ? "About" : "Over ons"}
           </Link>
-          <Link href={props.path + "/contact"}>Contact</Link>
-          <Link href={props.path + "/seo-sea"}>SEO & SEA</Link>
-          <Link href={props.path + "/web-design"}>Web Design</Link>
-          <Link href={props.path + "/web-shop"}>Web Shop</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/seo-sea">SEO & SEA</Link>
+          <Link href="/web-design">Web Design</Link>
+          <Link href="/web-shop">Web Shop</Link>
         </div>
       </div>
       <div className={classes.section}>

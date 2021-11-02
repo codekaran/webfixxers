@@ -49,48 +49,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </>
   );
 };
-export async function getStaticProps() {
+
+function formatData(data) {
+  let arr = [];
+  let dataToBeFormatted = data.sections[2];
+  let i = 1;
+
+  let len = Object.entries(dataToBeFormatted).length / 2;
+
+  while (true) {
+    arr.push({
+      Heading: dataToBeFormatted["Heading" + i],
+      Intro: dataToBeFormatted["Intro" + i],
+    });
+    i += 1;
+    if (i > len) {
+      break;
+    }
+  }
+  data.sections[2] = arr;
+  console.log(data.sections[2]);
+  return data;
+}
+
+export async function getStaticProps({ locale }) {
+  let data = {};
+  const lang = locale === "nl" ? "nl" : "en";
+  let formattedData = {};
+  try {
+    let res = await fetch(
+      "http://localhost:8000/getData?page=seo-sea&lang=" + lang
+    );
+    res = await res.json();
+    data = JSON.parse(res.data);
+    data["path"] = "";
+    formattedData = formatData(data);
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      content: {
-        path: "",
-        first_section: {},
-        second_section: {
-          heading: "WHAT WE DOEN",
-          sub_heading: "Wij maken je website beter zichtbaar.",
-          intro_part1: "Meer klanten nodig? Geen probleem.",
-          intro_part2: "",
-          related_info: [
-            {
-              heading: "SEO",
-              text:
-                "SEO helpt zoekmachines je website beter begrijpen en voorstellen aan klanten. Zo kan je door de juiste woorden te gebruiken je doelgroep bereiken.",
-            },
-            {
-              heading: "SEA",
-              text:
-                "SEA is simpelweg reclame maken via google. Door een budget op te stellen kan je nieuwe klanten binnenhalen en je verkoop opkrikken.",
-            },
-            {
-              heading: "Gode Ranking",
-              text:
-                "Samen met deze instrumenten kan je jezelf onhoog halen in google en goed zichtbaar zijn op het internet.",
-            },
-          ],
-        },
-        third_section: {
-          heading: "Onze aanpak",
-          sub_heading: "Creativiteit en inzichten",
-          intro:
-            "Met ons out of the box denken maken we je uitstaan van de rest.",
-          concept_info: "We stellen een idee voor en werken het samen uit.",
-          build_info: "Samen maken we alles op maat voor uw noden.",
-          test_info: "Uiteindelijk zetten we nog de puntjes op de i.",
-        },
-
-        fourth_section: {},
-      },
+      content: formattedData,
     },
+    // revalidate: 1,
   };
 }
+
 export default seo_sea;

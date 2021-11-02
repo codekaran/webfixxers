@@ -5,7 +5,6 @@ import HomeServices from "../sub_components/HomeServices";
 import HomeAbout from "../sub_components/HomeAbout";
 import HomeClients from "../sub_components/HomeClients";
 import HomeTestimonials from "../sub_components/HomeTestimonials";
-import BottomContact from "../sub_components/BottomContact";
 
 const Home = (props) => {
   console.log(props);
@@ -63,7 +62,6 @@ const Home = (props) => {
       <HomeAbout text={sections[3]}></HomeAbout>
       <HomeClients text={sections[4]}></HomeClients>
       <HomeTestimonials text={sections[5]}></HomeTestimonials>
-      <BottomContact path={props.text.path}></BottomContact>
     </div>
   );
 };

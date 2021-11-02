@@ -46,11 +46,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   );
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }) {
   let data = {};
+  const lang = locale === "nl" ? "nl" : "en";
   try {
     let res = await fetch(
-      "https://webfixxers-cms.herokuapp.com/getData?page=contact&lang=nl"
+      "http://localhost:8000/getData?page=contact&lang=" + lang
     );
     res = await res.json();
     data = JSON.parse(res.data);
@@ -63,6 +64,7 @@ export async function getStaticProps() {
     props: {
       content: data,
     },
+    revalidate: 10,
   };
 }
 

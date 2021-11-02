@@ -3,7 +3,6 @@ import Header from "../sub_components/Header";
 import image_url from "../images/contact_header.png";
 import Button from "../sub_components/Button";
 import GoogleMap from "../sub_components/GoogleMap";
-import BottomContact from "../sub_components/BottomContact";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import parser from "react-html-parser";
@@ -162,7 +161,6 @@ const Contact = (props) => {
       </div>
 
       <GoogleMap></GoogleMap>
-      <BottomContact path={path}></BottomContact>
     </>
   );
 };

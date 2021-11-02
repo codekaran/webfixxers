@@ -3,7 +3,7 @@ import parser from "react-html-parser";
 import image_url from "../images/services_header.png";
 import classes from "./Services.module.css";
 import Button from "../sub_components/Button";
-import BottomContact from "../sub_components/BottomContact";
+
 import Link from "next/link";
 
 const Services = (props) => {
@@ -195,7 +195,6 @@ const Services = (props) => {
       </div>
       {/* fifth section */}
       <div className={classes.about_fifth_section}></div>
-      <BottomContact path={path}></BottomContact>
     </>
   );
 };

@@ -50,50 +50,96 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   );
 };
 
-export async function getStaticProps() {
+function formatData(data) {
+  let arr = [];
+  let dataToBeFormatted = data.sections[2];
+  let i = 1;
+
+  let len = Object.entries(dataToBeFormatted).length / 2;
+
+  while (true) {
+    arr.push({
+      Heading: dataToBeFormatted["Heading" + i],
+      Intro: dataToBeFormatted["Intro" + i],
+    });
+    i += 1;
+    if (i > len) {
+      break;
+    }
+  }
+  data.sections[2] = arr;
+  console.log(data.sections[2]);
+  return data;
+}
+
+export async function getStaticProps({ locale }) {
+  let data = {};
+  let formattedData = {};
+  const lang = locale === "nl" ? "nl" : "en";
+  try {
+    let res = await fetch(
+      "http://localhost:8000/getData?page=web-shop&lang=" + lang
+    );
+    res = await res.json();
+    data = JSON.parse(res.data);
+    data["path"] = "";
+    formattedData = formatData(data);
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      content: {
-        path: "",
-        first_section: {},
-        second_section: {
-          heading: "WHAT WE DOEN",
-          sub_heading: "We starten je onlinewinkel in een paar dagen.",
-          intro_part1:
-            "De nood om online te verkopen is nog nooit groter geweest, dus waarom niet met een eigen webshop?",
-          intro_part2: "Geen grote commissies of kosten. Enkel een basisplan.",
-          related_info: [
-            {
-              heading: "Start met Ecwid",
-              text:
-                "U kent ecwid waarschijnlijk niet. Maar het is toch een super systeem. Hiermee kunt u voor een lage prijs uw webshop beheren en opstarten. Zo kunt U direct aan de slag met uw verkoop.",
-            },
-            {
-              heading: "gemakkelijke betalingenmet mollie",
-              text:
-                "Het belangrijkste in elke webshop is de betalingterminal. Hiermee ontvangt U betalingen. Mollie is zeer handig omdat we meer dan alleen bancontact en visa kunnen ontvangen. Dus verkoopt U nationaal of Europees, mollie maakt het allemaal mogelijk.",
-            },
-            {
-              heading: "Op maat gemaakt",
-              text:
-                "Voor een verdere professionalisering is het nodig om een volledig op maat gemaakte webshop te nemen. Heeft U al een boeking-systeem, boekhouding,kassa,stockbeheerder? Dan kan dit allemaal samengevoegd worden tot 1 werkend geheel. Zo hoeft U enkel maar bezig te zijn met de verkoop.",
-            },
-          ],
-        },
-        third_section: {
-          heading: "Onze aanpak",
-          sub_heading: "Creativiteit en inzichten",
-          intro:
-            "Met ons out of the box denken maken we je uitstaan van de rest.",
-          concept_info: "We stellen een idee voor en werken het samen uit.",
-          build_info: "Samen maken we alles op maat voor uw noden.",
-          test_info: "Uiteindelijk zetten we nog de puntjes op de i.",
-        },
-
-        fourth_section: {},
-      },
+      content: formattedData,
     },
+    // revalidate: 1,
   };
 }
+
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       content: {
+//         path: "",
+//         first_section: {},
+//         second_section: {
+//           heading: "WHAT WE DOEN",
+//           sub_heading: "We starten je onlinewinkel in een paar dagen.",
+//           intro_part1:
+//             "De nood om online te verkopen is nog nooit groter geweest, dus waarom niet met een eigen webshop?",
+//           intro_part2: "Geen grote commissies of kosten. Enkel een basisplan.",
+//           related_info: [
+//             {
+//               heading: "Start met Ecwid",
+//               text:
+//                 "U kent ecwid waarschijnlijk niet. Maar het is toch een super systeem. Hiermee kunt u voor een lage prijs uw webshop beheren en opstarten. Zo kunt U direct aan de slag met uw verkoop.",
+//             },
+//             {
+//               heading: "gemakkelijke betalingenmet mollie",
+//               text:
+//                 "Het belangrijkste in elke webshop is de betalingterminal. Hiermee ontvangt U betalingen. Mollie is zeer handig omdat we meer dan alleen bancontact en visa kunnen ontvangen. Dus verkoopt U nationaal of Europees, mollie maakt het allemaal mogelijk.",
+//             },
+//             {
+//               heading: "Op maat gemaakt",
+//               text:
+//                 "Voor een verdere professionalisering is het nodig om een volledig op maat gemaakte webshop te nemen. Heeft U al een boeking-systeem, boekhouding,kassa,stockbeheerder? Dan kan dit allemaal samengevoegd worden tot 1 werkend geheel. Zo hoeft U enkel maar bezig te zijn met de verkoop.",
+//             },
+//           ],
+//         },
+//         third_section: {
+//           heading: "Onze aanpak",
+//           sub_heading: "Creativiteit en inzichten",
+//           intro:
+//             "Met ons out of the box denken maken we je uitstaan van de rest.",
+//           concept_info: "We stellen een idee voor en werken het samen uit.",
+//           build_info: "Samen maken we alles op maat voor uw noden.",
+//           test_info: "Uiteindelijk zetten we nog de puntjes op de i.",
+//         },
+
+//         fourth_section: {},
+//       },
+//     },
+//   };
+// }
 
 export default web_shop;

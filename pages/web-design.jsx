@@ -50,46 +50,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   );
 };
 
-export async function getStaticProps() {
+function formatData(data) {
+  let arr = [];
+  let dataToBeFormatted = data.sections[2];
+  let i = 1;
+
+  let len = Object.entries(dataToBeFormatted).length / 2;
+
+  while (true) {
+    arr.push({
+      Heading: dataToBeFormatted["Heading" + i],
+      Intro: dataToBeFormatted["Intro" + i],
+    });
+    i += 1;
+    if (i > len) {
+      break;
+    }
+  }
+  data.sections[2] = arr;
+  console.log(data.sections[2]);
+  return data;
+}
+
+export async function getStaticProps({ locale }) {
+  let data = {};
+  let formattedData = {};
+  const lang = locale === "nl" ? "nl" : "en";
+  try {
+    let res = await fetch(
+      "http://localhost:8000/getData?page=web-design&lang=" + lang
+    );
+    res = await res.json();
+    data = JSON.parse(res.data);
+    data["path"] = "";
+    formattedData = formatData(data);
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
-      content: {
-        path: "",
-        first_section: {},
-        second_section: {
-          heading: "WAT WE DOEN",
-          sub_heading:
-            "wij maken websites op maat, om uw zaak op het internet te profileren.",
-          intro_part1:
-            "A website is more than just a marketplace it’s a face of your company. A good website nowadays is as important as a good service. The first thing many people do is to search your company and then come to you personally.",
-          intro_part2:
-            "So why not make a fully equipped and beautiful website. This allows you to get new customers more easily and keep the standards high for the current ones.",
-          related_info: [
-            {
-              heading: "Your Ideas",
-              text:
-                "Wij bij webfixxers geloven dat een website gemaakt wordt door de klant en ons. Wij vragen daarom om met ons een goed gesprek te hebben over uw noden. De design, de zaak, de noden en wat U graag heeft. Het moet allemaal besproken worden zodat wij uw een top website kunnen leveren. Wees daarom niet bang om ons te contacteren. Wij zijn altijd open voor vragen.",
-            },
-            {
-              heading: "Budget",
-              text:
-                "Wij geloven dat het internet voor iedereen is. Juist daarom maken we websites beschikbaar voor iedereen. Van een goedkope website naar de meest geavanceerde webshop mogelijk. Wij willen een zo goed mogelijke dienst verlenen aan de beste prijs. Dus neem met ons contact en we beantwoorden al uw vragen.",
-            },
-          ],
-        },
-        third_section: {
-          heading: "Onze aanpak",
-          sub_heading: "Creativiteit en inzichten",
-          intro:
-            "Met ons out of the box denken maken we je uitstaan van de rest.",
-          concept_info: "We stellen een idee voor en werken het samen uit.",
-          build_info: "Samen maken we alles op maat voor uw noden.",
-          test_info: "Uiteindelijk zetten we nog de puntjes op de i.",
-        },
-
-        fourth_section: {},
-      },
+      content: formattedData,
     },
+    // revalidate: 1,
   };
 }
 
