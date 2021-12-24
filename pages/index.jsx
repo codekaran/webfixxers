@@ -61,7 +61,7 @@ export async function getStaticProps({ locale }) {
   let data = {};
   try {
     let res = await fetch(
-      "http://localhost:8000/getData?page=home&lang=" + lang
+      "http://localhost:8000/getData?website=webfixxers&page=home&lang=" + lang
     );
     res = await res.json();
     console.log(res);

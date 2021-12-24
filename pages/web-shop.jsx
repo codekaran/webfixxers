@@ -78,7 +78,8 @@ export async function getStaticProps({ locale }) {
   const lang = locale === "nl" ? "nl" : "en";
   try {
     let res = await fetch(
-      "http://localhost:8000/getData?page=web-shop&lang=" + lang
+      "http://localhost:8000/getData?website=webfixxers&page=web-shop&lang=" +
+        lang
     );
     res = await res.json();
     data = JSON.parse(res.data);
